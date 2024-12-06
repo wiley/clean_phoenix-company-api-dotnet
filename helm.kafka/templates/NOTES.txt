@@ -1,0 +1,3 @@
+Thank you for installing {{ .Chart.Name }}.
+
+Your release is named {{ .Chart.Name }} is currently running image {{ .Values.image.repository }}:{{ .Values.image.tag }}

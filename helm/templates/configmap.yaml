@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.appName }}-env
+  namespace: {{ .Release.Namespace }}
+data:
+  {{- if .Values.env_vars.aspnetcore_environment }}
+  ASPNETCORE_ENVIRONMENT: "{{ .Values.env_vars.aspnetcore_environment }}"
+  {{ else }}
+  ASPNETCORE_ENVIRONMENT:  "{{ .Release.Namespace }}"
+  {{ end }}
+  DOMAIN: "{{ .Values.appName }}.{{ .Values.dns.external }}"
+  LOG_JSON: "{{ .Values.env_vars.log.json }}"
+  LOG_MINIMUMLEVEL: "{{ .Values.env_vars.log.minimumlevel }}"
+  KAFKA_TOPIC: "{{ .Values.env_vars.kafka.topic }}"
+  KAFKA_CONSUMER_GROUP: "{{ .Values.env_vars.kafka.consumer_group }}"
+  KAFKA_HOST: "{{ .Values.env_vars.kafka.host }}"
+  OPA_BASE_URL: "{{ .Values.env_vars.opa.base_url }}"
+  KEYCLOAK_BASE_URL: "{{ .Values.env_vars.keycloak.base_url }}"
+  KEYCLOAK_REALM: "{{ .Values.env_vars.keycloak.realm }}"
+  KEYCLOAK_AUDIENCE: "{{ .Values.env_vars.keycloak.audience }}"

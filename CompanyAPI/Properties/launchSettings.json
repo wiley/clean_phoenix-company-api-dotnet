@@ -1,0 +1,46 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:53342",
+      "sslPort": 44362
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "COMPANYAPI_CONNECTION_STRING": "server=localhost;port=3306;user id=root;password=passion4excellence;database=CompanyAPI",
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "API_KEY": "",
+        "OPA_BASE_URL": "https://opa.dev.sgp.wiley.host/",
+        "KEYCLOAK_BASE_URL": "https://keycloak.dev.sgp.wiley.host",
+        "KEYCLOAK_REALM": "darwin",
+        "KEYCLOAK_AUDIENCE": "account",
+        "KAFKA_HOST": "kafka.dev.sgp.private.wiley.host:9092",
+        "KAFKA_TOPIC": "wly.glb.pl.account, wly.glb.pl.organization"
+      }
+    },
+    "CompanyAPI": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "COMPANYAPI_CONNECTION_STRING": "server=localhost;port=3306;user id=root;password=passion4excellence;database=CompanyAPI",
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "API_KEY": "",
+        "OPA_BASE_URL": "https://opa.dev.sgp.wiley.host/",
+        "KEYCLOAK_BASE_URL": "https://keycloak.dev.sgp.wiley.host",
+        "KEYCLOAK_REALM": "darwin",
+        "KEYCLOAK_AUDIENCE": "account",
+        "KAFKA_HOST": "kafka.dev.sgp.private.wiley.host:9092",
+        "KAFKA_TOPIC": "wly.glb.pl.account, wly.glb.pl.organization"
+      },
+      "applicationUrl": "https://localhost:5001;http://localhost:5000"
+    }
+  }
+}

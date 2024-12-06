@@ -1,0 +1,369 @@
+{
+	"info": {
+		"_postman_id": "d3b835aa-5c0f-4c9a-b65d-6380793da230",
+		"name": "Company API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7811012"
+	},
+	"item": [
+		{
+			"name": "Organization",
+			"item": [
+				{
+					"name": "Organization Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"if (pm.response.code==201) {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    let id = jsonData.organizationId;\r",
+									"    pm.environment.set(\"organization_id\", id);\r",
+									"    console.log(\"Organization ID: \" + id);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"organizationName\": \"Sample organization\",\r\n    \"logoUrl\": \"https://my-url.com/logo.png\",\r\n    \"city\": \"Sophia\",\r\n    \"organizationType\": \"Talent\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{company_domain}}/api/v4/organizations/",
+							"host": [
+								"{{company_domain}}"
+							],
+							"path": [
+								"api",
+								"v4",
+								"organizations",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Organization Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{company_domain}}/api/v4/organizations/9999",
+							"host": [
+								"{{company_domain}}"
+							],
+							"path": [
+								"api",
+								"v4",
+								"organizations",
+								"9999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Organization Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{company_domain}}/api/v4/organizations/{{organization_id}}/",
+							"host": [
+								"{{company_domain}}"
+							],
+							"path": [
+								"api",
+								"v4",
+								"organizations",
+								"{{organization_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Organization List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"if (pm.response.code==201) {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    let id = jsonData.organizationId;\r",
+									"    pm.environment.set(\"organization_id\", id);\r",
+									"    console.log(\"Organization ID: \" + id);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{company_domain}}/api/v4/organizations/",
+							"host": [
+								"{{company_domain}}"
+							],
+							"path": [
+								"api",
+								"v4",
+								"organizations",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Organization Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"organizationName\": \"Sample organization update\",\r\n    \"city\": \"Sophia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{company_domain}}/api/v4/organizations/{{organization_id}}/",
+							"host": [
+								"{{company_domain}}"
+							],
+							"path": [
+								"api",
+								"v4",
+								"organizations",
+								"{{organization_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Organization User Role",
+			"item": [
+				{
+					"name": "Org User Role Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"if (pm.response.code==201) {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    let id = jsonData.id;\r",
+									"    pm.environment.set(\"org_user_role_id\", id);\r",
+									"    console.log(\"Organization User Role ID: \" + id);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"organizationId\": {{organization_id}},\r\n    \"userId\": {{user_id}},\r\n    \"role\": \"Facilitator\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{company_domain}}/api/v4/organization-user-roles/",
+							"host": [
+								"{{company_domain}}"
+							],
+							"path": [
+								"api",
+								"v4",
+								"organization-user-roles",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Org User Role Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{company_domain}}/api/v4/organization-user-roles/5/",
+							"host": [
+								"{{company_domain}}"
+							],
+							"path": [
+								"api",
+								"v4",
+								"organization-user-roles",
+								"5",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Org User Role Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{company_domain}}/api/v4/organization-user-roles/{{org_user_role_id}}/",
+							"host": [
+								"{{company_domain}}"
+							],
+							"path": [
+								"api",
+								"v4",
+								"organization-user-roles",
+								"{{org_user_role_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Org User Role List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{company_domain}}/api/v4/organization-user-roles?userId={{user_id}}&organizationType=Talent",
+							"host": [
+								"{{company_domain}}"
+							],
+							"path": [
+								"api",
+								"v4",
+								"organization-user-roles"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "{{user_id}}"
+								},
+								{
+									"key": "organizationType",
+									"value": "Talent"
+								},
+								{
+									"key": "include",
+									"value": "roles",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "OrgAdmin",
+									"disabled": true
+								},
+								{
+									"key": "keyword",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{company_api_key}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "X-API-Key",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

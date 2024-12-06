@@ -1,0 +1,39 @@
+# Default values for company-api
+# This file is in YAML format
+# Declared variables to be passed into $/templates files
+
+appName: kafka-company-consumer
+
+image:
+  repository: 929380036510.dkr.ecr.us-east-1.amazonaws.com/kafka-company-consumer
+  tag: stage
+  pullPolicy: Always
+
+imagePullSecrets: []
+
+resources:
+  limits:
+    cpu: 250m
+    memory: 384Mi
+  requests:
+    cpu: 100m
+    memory: 100Mi
+
+# replicacount has no impact if autoscaling.enabled = true
+replicacount: 1
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 2
+  targetCPUUtilizationPercentage: 70
+  targetMemoryUtilizationPercentage: 85
+
+env_vars:
+  aspnetcore_environment: Staging
+  log:
+    json: true
+    minimumlevel: Information
+  kafka:
+    topic: WLS.CompanyAPI.Department
+    consumer_group: WLS.CompanyAPI
+    host: b-1.catalyst-nonprod.mmhbp5.c4.kafka.us-east-1.amazonaws.com:9092,b-2.catalyst-nonprod.mmhbp5.c4.kafka.us-east-1.amazonaws.com:9092
